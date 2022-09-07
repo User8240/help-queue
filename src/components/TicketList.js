@@ -1,24 +1,10 @@
 import React from "react";
 import Ticket from "./Ticket";
+import PropTypes from "prop-types";
+//ADDED FROM LESSON 27
+//STEP 2: Pass New Props to TicketList Component and Add propTypes
 
-
-const mainTicketList = [
-  {
-    names:'Thato and Haley',
-    location:'3A',
-    issue: 'Firebase won\'t save record. Halp.'
-  },
-  {
-    names:'Sleater and Kinney',
-    location:'4B',
-    issue: 'Prop types are throwing an error.'
-  },
-  {
-    names:'Imani & Jacob',
-    location:'9F',
-    issue: 'Child component isn\'t rendering.'
-  }
-];
+// remove const mainTicketList = [ ... ]. We no longer want these.
 
 function TicketList(){
   return (
