@@ -23,11 +23,17 @@ class TicketControl extends React.Component {
     }));
   }  
 
+  handleAddingNewTicketToList = (newTicket) => {
+    const newMainTicketList = this.state.mainTicketList.concat(newTicket);
+    this.setState({mainTicketList: newMainTicketList,
+                  formVisibleOnPage: false });
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewTicketForm />;
+    if (this.state.formVisibleOnPage === true) {
+      currentlyVisibleState = <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList} />;
       buttonText = "Return to Ticket List";
     } else {
       currentlyVisibleState = <TicketList ticketList={this.state.mainTicketList} />; 
@@ -39,6 +45,7 @@ class TicketControl extends React.Component {
       //We call it ticketList here, so we'll use that name to access it as a prop inside of the TicketList component
       buttonText = "Add Ticket";
     }
+
     return (
       <React.Fragment>
         {currentlyVisibleState}
