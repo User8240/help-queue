@@ -3,6 +3,7 @@ import { v4 } from 'uuid';
 //ABOVE: gives us the ability to assign unique IDs to new tickets
 //v4() will create a random 32 character string (guarantees a unique ID pretty much)
 import PropTypes from "prop-types";
+import ReusableForm from "./ReusableForm";
 
 function NewTicketForm(props){
 
@@ -19,26 +20,14 @@ function NewTicketForm(props){
       //this whole object will be viewed as newTicket in the parameters of our handleAddingNewTicketToList method - REMEMBER this will get passed to TicketControl because our method needs to execute inside of the parent component so we are able to update state
     });
   }
+  
   return (
     <React.Fragment>
-      <form onSubmit={handleNewTicketFormSubmission}>
-        {/* what we add after the = does whatever we want to form to do on submit (when the button below is clicked)*/}
-        <input
-          type='text'
-          name='names'
-          placeholder='Pair Names' />
-        <input
-          type='text'
-          name='location'
-          placeholder='Location' />
-        <textarea
-          name='issue'
-          placeholder='Describe your issue.' />
-        <button type='submit'>Help</button>
-      </form>
+      <ReusableForm 
+        formSubmissionHandler={handleNewTicketFormSubmission}
+        buttonText="Help!" />
     </React.Fragment>
   );
-
 }
 
 NewTicketForm.propTypes = {
